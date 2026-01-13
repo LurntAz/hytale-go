@@ -1,117 +1,119 @@
-# hytale-go (Hytale Manager ?)
+# **Hytale Go (Hytale Manager)**
 
-**Hytale Go** est un outil écrit en Go pour gérer un serveur Hytale. Il permet de démarrer, surveiller, mettre à jour et redémarrer le serveur Hytale, tout en envoyant les logs et notifications via Discord.
-
----
-
-## Fonctionnalités
-
-- **Gestion des versions** : Vérifie la version actuelle et la dernière version disponible du serveur Hytale.
-- **Démarrage du serveur** : Démarre le serveur Hytale en mode console et affiche les logs en temps réel.
-- **Interaction en temps réel** : Permet d'envoyer des commandes directement au serveur via le terminal.
-- **Surveillance des logs** : Capture les logs du serveur et les envoie à un webhook Discord.
-- **Mise à jour et redémarrage** : Permet de mettre à jour et redémarrer le serveur via des commandes HTTP.
+**Hytale Go** is a Go-based tool for managing a Hytale server. It allows you to start, monitor, update, and restart the Hytale server while sending logs and notifications via Discord.
 
 ---
 
-## Prérequis
+## **Features**
 
-- **Go 1.16+** : Pour compiler et exécuter l'outil.
-- **Java 25** : Pour exécuter le serveur Hytale.
-- **Hytale Downloader** : Pour télécharger les fichiers du serveur Hytale.
-- **Webhook Discord** : Pour recevoir les notifications des logs.
+- **Version Management**: Checks the current and latest available versions of the Hytale server.
+- **Server Startup**: Launches the Hytale server in console mode and displays real-time logs.
+- **Real-Time Interaction**: Sends commands directly to the server via the terminal.
+- **Log Monitoring**: Captures server logs and sends them to a Discord webhook.
+- **Update & Restart**: Updates and restarts the server via HTTP commands.
 
 ---
 
-## Installation
+## **Prerequisites**
 
-1. **Cloner le dépôt** :
+- **Go 1.16+**: To compile and run the tool.
+- **Java 25**: To run the Hytale server.
+- **Hytale Downloader**: To download Hytale server files.
+- **Discord Webhook**: To receive log notifications.
+
+---
+
+## **Installation**
+
+1. **Clone the repository**:
    ```bash
-   git clone https://github.com/votre-utilisateur/hytale-manager.git
+   git clone https://github.com/your-username/hytale-manager.git
    cd hytale-manager
    ```
 
-2. **Construire le projet** :
+2. **Build the project**:
    ```bash
    go build -o hytale-manager
    ```
 
 ---
 
-## Utilisation
+## **Usage**
 
-### Démarrer l'outil
+### **Start the Tool**
 
 ```bash
 ./hytale-manager \
-  --credentials-path /chemin/vers/credentials.json \
-  --download-path /chemin/vers/téléchargement \
+  --credentials-path /path/to/credentials.json \
+  --download-path /path/to/download \
   --patchline release \
-  --server-path /chemin/vers/serveur \
-  --webhook-url VOTRE_URL_WEBHOOK_DISCORD
+  --server-path /path/to/server \
+  --webhook-url YOUR_DISCORD_WEBHOOK_URL
 ```
 
-### Commandes HTTP
+### **HTTP Commands**
 
-- **Mettre à jour le serveur** :
+- **Update the server**:
   ```bash
   curl "http://localhost:8080/execute?command=update"
   ```
 
-- **Redémarrer le serveur** :
+- **Restart the server**:
   ```bash
   curl "http://localhost:8080/execute?command=restart"
   ```
 
-### Interaction en temps réel
+### **Real-Time Interaction**
 
-- Une fois le serveur démarré, vous pouvez entrer des commandes directement dans le terminal pour interagir avec le serveur Hytale.
+- Once the server is running, you can enter commands directly in the terminal to interact with the Hytale server.
 
 ---
 
-## Structure du Projet
+## **Project Structure**
 
 ```
-/hytale-manager
-  ├── main.go
-  ├── commands/
-  │   └── command_manager.go
-  ├── discord/
-  │   └── discord_manager.go
-  ├── server/
-  │   └── server.go
+/hytale-go
+  ├── cmd/
+  │   └── main.go
+  ├── internal/module/
+  │   ├── commands/
+  │   │   └── command_manager.go
+  │   ├── discord/
+  │   │   └── discord_manager.go
+  │   └── server/
+  │       └── server.go
   └── README.md
 ```
 
 ---
 
-## Contribution
+## **Contributing**
 
-Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une *issue* ou une *pull request* pour proposer des améliorations.
-
----
-
-## Licence
-
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Contributions are welcome! Feel free to open an **issue** or **pull request** to suggest improvements.
 
 ---
 
-## Auteurs
+## **License**
 
-- **Lurnt Az** - Développeur principal chez **Ziroh**.
-
----
-
-## Remerciements
-
-- Merci à la communauté Hytale pour leur support et leur documentation.
-- Merci à **Mistral AI** et son assistant **Le Chat** pour leur soutien technique et leur aide précieuse dans le développement de cet outil.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-### Instructions pour l'utiliser
+## **Authors**
 
-1. **Personnalisez** les chemins et les URLs selon votre configuration.
-2. **Ajoutez une licence** si nécessaire.
-3. **Ajoutez des instructions supplémentaires** si vous avez des fonctionnalités spécifiques à documenter.
+- **Lurnt Az** – Lead Developer at **Ziroh**.
+
+---
+
+## **Acknowledgments**
+
+- Thanks to the **Hytale community** for their support and documentation.
+- Thanks to **Mistral AI** and its assistant **Le Chat** for technical support and assistance in developing this tool.
+
+---
+
+### **Instructions for Use**
+
+1. **Customize** paths and URLs according to your setup.
+2. **Add a license** if needed.
+3. **Include additional instructions** if you have specific features to document.
