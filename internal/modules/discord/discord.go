@@ -38,3 +38,22 @@ func (dm *DiscordManager) SendMessage(message string) error {
 
 	return nil
 }
+
+// SendEmbed envoie un embed à Discord
+func (dm *DiscordManager) SendEmbed(embed Embed) error {
+	if dm.WebhookURL == "" {
+		log.Println("Aucune URL de webhook Discord configurée.")
+		return nil
+	}
+
+	message := DiscordEmbedMessage{
+		Embeds: []Embed{embed},
+	}
+	payload, err := json.Marshal(message)
+	if err != nil {
+		return err
+	}
+
+	_, err = http.Post(dm.WebhookURL, "application/json", bytes.NewBuffer(payload))
+	return err
+}

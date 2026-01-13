@@ -7,9 +7,10 @@ import (
 	"log"
 	"os"
 	"os/signal"
-	"strings"
 	"syscall"
 
+	"github.com/LurntAz/hytale-go/internal/domains"
+	loghandler "github.com/LurntAz/hytale-go/internal/handler/log_handler"
 	"github.com/LurntAz/hytale-go/internal/modules/commands"
 	"github.com/LurntAz/hytale-go/internal/modules/discord"
 	"github.com/LurntAz/hytale-go/internal/modules/server"
@@ -45,19 +46,11 @@ func main() {
 	}
 	log.Println("Serveur Hytale démarré en mode console. Appuyez sur Ctrl+C pour arrêter.")
 
-	// Écouter les logs et les envoyer à Discord
-	go func() {
-		for line := range logChan {
-			fmt.Println(line) // Afficher le log dans la console
+	// Initialiser le gestionnaire de logs
+	logHandler := loghandler.NewLogHandler(discordManager, domains.InterestingLogs)
 
-			if *webhookURL != "" && strings.Contains(line, "Hytale Server Booted!") {
-				err := discordManager.SendMessage(line)
-				if err != nil {
-					log.Printf("Erreur lors de l'envoi du message Discord: %v", err)
-				}
-			}
-		}
-	}()
+	// Simuler un canal de logs (à remplacer par votre source réelle)
+	logHandler.HandleLogs(logChan)
 
 	// Écouter les entrées utilisateur pour envoyer des commandes au serveur
 	go func() {

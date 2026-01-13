@@ -47,7 +47,7 @@ func (cm *CommandManager) UpdateServer() (string, error) {
 // RestartServer redémarre le serveur Hytale.
 func (cm *CommandManager) RestartServer() error {
 	// Arrêter le serveur
-	stopCmd := exec.Command("pkill", "-f", "java -jar HytaleServer.jar")
+	stopCmd := exec.Command("pkill", "-f", "java -jar "+cm.ServerPath+"/Server/HytaleServer.jar --assets "+cm.ServerPath+"/Assets.zip")
 	err := stopCmd.Run()
 	if err != nil {
 		return fmt.Errorf("erreur lors de l'arrêt du serveur: %v", err)
