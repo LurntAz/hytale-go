@@ -30,6 +30,12 @@ func main() {
 	commandManager := commands.NewCommandManager(*credentialsPath, *downloadPath, *patchline, *serverPath)
 	discordManager := discord.NewDiscordManager(*webhookURL)
 
+	// Télécharger et extraire le serveur Hytale
+	err := commandManager.DownloadAndExtractServer()
+	if err != nil {
+		log.Fatalf("Erreur lors du téléchargement et de l'extraction du serveur: %v\n", err)
+	}
+
 	// Vérifier les versions
 	currentVersion, latestVersion, err := commandManager.CheckVersion()
 	if err != nil {

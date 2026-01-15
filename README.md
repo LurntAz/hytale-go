@@ -1,4 +1,4 @@
-# **Hytale Go (Hytale Manager)**
+# **Hytale Go (or Hytale Manager)**
 
 **Hytale Go** is a Go-based tool for managing a Hytale server. It allows you to start, monitor, update, and restart the Hytale server while sending logs and notifications via Discord.
 
